@@ -57,8 +57,9 @@ public class JavaSftp {
             File[] listOfFiles = folder.listFiles();
 
             for (File file : listOfFiles) {
-                if (file.isFile()) {
-
+                
+                if (file.isFile() && file.getName().substring(file.getName().length()-3).toLowerCase().equals("zip") ) {
+                    
                     sftpChannel.put("../" + file.getName(), "/var/www/html/hdc/warehouse/f43import/frontend/web/fortythree");
                     System.out.println(file.getName());
                     sftpChannel.put("../" + file.getName(), "/usr/local/apache-tomcat-8.0.21/webapps/hdc/WEB-INF/fortythree_backup");
