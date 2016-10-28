@@ -65,7 +65,10 @@ public class JavaSftp {
                     sftpChannel.put("../" + file.getName(), "/usr/local/apache-tomcat-8.0.21/webapps/hdc/WEB-INF/fortythree_backup");
 
                     //Files.move("../"+file.getName(), "/ok");
-                    
+                    File fileInOk =new File("../ok/" + file.getName());                  
+                    if( fileInOk.exists() && fileInOk.isFile()){
+                        fileInOk.delete();
+                    }
                     file.renameTo(new File("../ok/" + file.getName()));
                 }
             }
